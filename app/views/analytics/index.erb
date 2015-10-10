@@ -1,0 +1,84 @@
+<% content_for :title, "Welcome to Yourstory Twitter Top Links app" %>
+
+ <nav role="navigation" class="navbar navbar-default navbar-static-top home-nav-bar">
+  <div class="container">
+
+      <div class="navbar-header">
+          <%if current_user%>
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#navbar">
+
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+
+            </button>
+         <%end%>
+            <a  href="/">
+                Twitter Top Links
+            </a>
+      </div>
+
+      <%if current_user%>
+        <div class="collapse navbar-collapse" id="navbar">
+              <ul class="nav navbar-nav navbar-right home-nav-sub user-info">
+                  <li><span class="home-nav-sub-item"><%=current_user.name%></span><img src="<%=current_user.image%>" width="50" height="50" /> </li>
+                  <li><%= link_to "Logout", logout_path, method: "delete"%></li>
+              </ul>
+        </div>
+      <%end%>
+
+  </div>
+</nav>
+<div class="container">
+
+<%if current_user%>
+   <div class="row">
+
+   <div class="col-sm-12">
+     <h2>Tweets with links</h2>
+     <div class="col-sm-12 text-center jumbotron" style="padding:50px;">
+          <i class="fa fa-cog fa-spin list-loading" style="font-size:50px;"></i>
+          <ul class="list-holder" style="display:none;">
+
+          </ul>
+     </div>
+   </div>
+   <div class="col-sm-12">
+      <div class="col-sm-6">
+          <h2>Top Domains</h2>
+          <div class="text-center">
+              <i class="fa fa-cog fa-spin domain-loading" style="font-size:30px;"></i>
+              <ul class="top-domains" style="display:none;">
+
+              </ul>
+          </div>
+      </div>
+     <div class="col-sm-6">
+          <h2>Top User</h2>
+          <div class="text-center">
+              <i class="fa fa-cog fa-spin user-loading" style="font-size:30px;"></i>
+              <div class="top-user" style="display:none;">
+
+              </div>
+          </div>
+     </div>
+
+   </div>
+   </div>
+<%else%>
+    <div class="row text-center">
+
+          <h1>Login with Twitter to get Top Links</h1>
+          <div class="col-sm-12 text-center jumbotron" style="padding:200px;">
+              <a class="btn btn-block btn-social btn-twitter" href="/auth/twitter">
+                <i class="fa fa-twitter"></i>
+                Sign in with Twitter
+              </a>
+          </div>
+      </div>
+<%end%>
+
+
+
+
+</div>
