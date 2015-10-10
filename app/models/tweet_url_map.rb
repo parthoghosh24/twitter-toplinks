@@ -38,6 +38,7 @@ class TweetUrlMap < ActiveRecord::Base
            else
                 domain_map[domain]=1
            end
+           Rails.logger.info(" domain_map[domain] is #{domain} and value is #{domain_map[domain]}")
        end
        domain_map=domain_map.sort_by {|_key, value| value}
        domain_map.keys.reverse

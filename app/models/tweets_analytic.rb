@@ -16,6 +16,7 @@ class TweetsAnalytic < ActiveRecord::Base
       def self.import(tweets, current_user=nil)
            if current_user
               tweets= current_user.get_all_tweets
+              Rails.logger.info(" Total tweets are #{tweets.size} ")
               tweets.each do |tweet|
                   if (tweet.text.include? "http" or tweet.text.include? "https") and !tweet.text.include?"twitter.com"# better way would have been to use regex something like http(s)
                      process_tweet(tweet) # Here we are processing tweet to store it in db
