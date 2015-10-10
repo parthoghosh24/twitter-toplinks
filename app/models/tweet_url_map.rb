@@ -38,16 +38,22 @@ class TweetUrlMap < ActiveRecord::Base
 
   private
   def self.process_url(raw_url)
-       url = URI.parse(raw_url)
-       res = Net::HTTP.get_response(url)
-       while res.code!="200" and res.code=="301"
+       begin
+        url = URI.parse(raw_url)
+        res = Net::HTTP.get_response(url)
+        while res.code!="200" and res.code=="301"
             url = URI.parse(res['location'])
             res = Net::HTTP.get_response(url)
-       end
-       if res.code == "200"
+        end
+        if res.code == "200"
           return url.host
         else
            return "Unable to parse domain"
         end
+
+       rescue Exception => e
+            return "Unable to parse domain"
+       end
+
   end
 end
