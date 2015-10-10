@@ -11,3 +11,5 @@ To Build this app
 * bundle install after cloning it
 
 * bundle exec rake db:migrate to migrate the database changes
+
+* bundle exec rake assets:precompile to precompile the static assets
