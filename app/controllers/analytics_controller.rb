@@ -30,7 +30,7 @@ class AnalyticsController < ApplicationController
   end
 
   def top_domains
-      top_domains= if  TweetUrlMap.count>0 then TweetUrlMap.domain_counts else ""
+      top_domains= TweetUrlMap.count>0 ? TweetUrlMap.domain_counts : []
       render json:{domains:top_domains}
   end
 end
