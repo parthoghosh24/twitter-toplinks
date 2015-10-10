@@ -30,9 +30,11 @@ class TweetUrlMap < ActiveRecord::Base
 
   def self.update_domains
        maps = TweetUrlMap.all
-       maps.each do |map|
-           domain = process_url(map.url)
-           map.update!(domain:domain)
+       ActiveRecord::Base.transaction do
+          maps.each do |map|
+             domain = process_url(map.url)
+             map.update(domain:domain)
+          end
        end
   end
 
