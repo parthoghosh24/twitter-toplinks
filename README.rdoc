@@ -1,28 +1,11 @@
-== README
+== Twitter Top Links app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app has been built for the Yourstory exercise
 
-Things you may want to cover:
+To Build this app
 
-* Ruby version
+* Checkout <tt>database.yml file</tt> and create the needed database with user permissions and update the same in database.yml to work. Ideally it should be gitignored and local to developers.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* You can connect your own twitter account by modifying the customer keys in <tt>secrets.yml</tt> Remeber to set the callback url and domain in app setup in twitter.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
