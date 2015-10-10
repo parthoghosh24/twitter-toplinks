@@ -28,12 +28,19 @@ class TweetUrlMap < ActiveRecord::Base
         end
   end
 
-  def self.update_domains
+  def self.domain_counts
        maps = TweetUrlMap.all
+       domain_map={}
        maps.each do |map|
            domain = process_url(map.url)
-           map.update!(domain:domain)
+           if domain_map.has_key?domain
+                domain_map[domain]+=1
+           else
+                domain_map[domain]=1
+           end
        end
+       domain_map=domain_map.sort_by {|_key, value| value}
+       domain_map.keys.reverse
   end
 
   private

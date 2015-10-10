@@ -30,12 +30,7 @@ class AnalyticsController < ApplicationController
   end
 
   def top_domains
-      TweetUrlMap.update_domains if  TweetUrlMap.count>0
-      top_domains_plucks = TweetUrlMap.select("domain,count(*) as tc").group("domain").order("tc desc")
-      top_domains=[]
-      top_domains_plucks.each do |domain_obj|
-          top_domains.push(domain_obj.domain)
-      end
+      top_domains= if  TweetUrlMap.count>0 then TweetUrlMap.domain_counts else ""
       render json:{domains:top_domains}
   end
 end

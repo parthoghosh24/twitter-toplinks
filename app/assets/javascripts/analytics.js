@@ -27,6 +27,14 @@ $(document).ready(function(){
                             var domains = data.domains;
                             $.each(domains,function(idx,value){
                                     var fontSize =(domains.length-idx)*5;
+                                    if(idx ==0 )
+                                      {
+                                        fontSize>=100;
+                                      }
+                                    if (fontSize>=50)
+                                      {
+                                        fontSize=50;
+                                      }
                                     if (fontSize<=15)
                                       {
                                         fontSize=15;
