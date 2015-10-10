@@ -8,4 +8,4 @@ To Build this app
 
 * You can connect your own twitter account by modifying the customer keys in <tt>secrets.yml</tt> Remeber to set the callback url and domain in app setup in twitter.
 
-
+* bundle install after cloning it

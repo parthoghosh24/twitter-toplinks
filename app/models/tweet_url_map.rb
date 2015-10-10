@@ -23,7 +23,7 @@ class TweetUrlMap < ActiveRecord::Base
            if !urls.blank?
               urls.each do |url|
                 # domain = process_url(url)
-                TweetUrlMap.create!(tweets_analytics_id:tweet.id, url:url, domain:domain, tweet_user_id:tweet.tweet_user.id)
+                TweetUrlMap.create!(tweets_analytics_id:tweet.id, url:url, domain:nil, tweet_user_id:tweet.tweet_user.id)
               end
            end
         end
