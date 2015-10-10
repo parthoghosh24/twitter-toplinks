@@ -22,7 +22,6 @@ class TweetUrlMap < ActiveRecord::Base
            urls = URI.extract(tweet.tweet_text,['http','https'])
            if !urls.blank?
               urls.each do |url|
-                # domain = process_url(url)
                 TweetUrlMap.create!(tweets_analytics_id:tweet.id, url:url, domain:nil, tweet_user_id:tweet.tweet_user.id)
               end
            end
